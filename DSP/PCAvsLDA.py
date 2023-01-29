@@ -1,0 +1,28 @@
+import numpy as np
+np.set_printoptions(suppress=True,formatter={'float_kind':'{:0.2f}'.format})
+import matplotlib.pyplot as plt
+
+C1 = np.array([[4,1],[2,4],[2,3],[3,6],[4,4]])
+C2 = np.array([[9,10],[6,8],[9,5],[8,7],[10,8]])
+cx1 = np.array([i[0] for i in C1])
+cy1 = np.array([i[1] for i in C1])
+cx2 = np.array([i[0] for i in C2])
+cy2 = np.array([i[1] for i in C2])
+W = np.array([-0.91,-0.39]).reshape(2,1)
+Y1 = np.dot(C1,W)
+Y2 = np.dot(C2,W)
+P = np.array([0.198,0.98]).reshape(2,1)
+py1 = np.dot(C1,P)
+py2 = np.dot(C2,P)
+fig = plt.figure()
+ax = fig.add_subplot(131)
+ax.scatter(cx1,cy1,c='r')
+ax.scatter(cx2,cy2,c='g')
+ax1 = fig.add_subplot(132)
+ax1.scatter(Y1,np.zeros_like(Y1),c='r')
+ax1.scatter(Y2,np.zeros_like(Y2),c='g')
+ax2 = fig.add_subplot(133)
+ax2.scatter(py1,np.zeros_like(py1),c='r')
+ax2.scatter(py2,np.zeros_like(py2),c='g')
+plt.show()
+
